@@ -7,12 +7,15 @@
     "node": "24.x"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check-pretty": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "eslint": "10.7.0",
+    "eslint-config-prettier": "10.1.8",
     "globals": "17.5.0",
+    "prettier": "3.8.3",
     "typescript": "5.8.3",
     "typescript-eslint": "8.65.0"
   }
