@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "check-pretty": "prettier --check .",
     "check-types": "tsc --noEmit",
-    "sam-validate": "sam validate --region eu-west-2 --lint -t template.yaml"
+    "sam-validate": "sam validate --region eu-west-2 --lint -t template.yaml",
+    "knip": "knip"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -19,6 +20,7 @@
     "globals": "17.5.0",
     "prettier": "3.8.3",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.65.0"
+    "typescript-eslint": "8.65.0",
+    "knip": "6.25.0"
   }
 }
