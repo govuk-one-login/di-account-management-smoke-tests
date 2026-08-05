@@ -2,14 +2,38 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Account management smoke tests
 
+Parameters:
+  Environment:
+    Description: "The environment type"
+    Type: "String"
+    AllowedValues:
+      - "demo"
+      - "dev"
+      - "build"
+      - "staging"
+      - "integration"
+      - "production"
+    ConstraintDescription: must be dev, build, staging, integration or production
+  CanaryName:
+    Type: String
+    Description: Name of the Synthetics canary
+Conditions:
+  IsProduction: !Equals [!Ref Environment, production]
+
 Globals:
   Function:
     Timeout: 30
     Runtime: nodejs24.x
 
 Resources:
-  SmokeTestFunction:
-    Type: AWS::Serverless::Function
+  BaseUrlParameter:
+    Type: AWS::SSM::Parameter
     Properties:
-      Handler: src/canary.handler
-      CodeUri: .
+      Name: !Sub "${CanaryName}-base-url"
+      Type: String
+      Value:
+        !If [
+          IsProduction,
+          "https://home.account.gov.uk",
+          !Sub "https://home.${Environment}.account.gov.uk",
+        ]
