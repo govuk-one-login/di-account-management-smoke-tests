@@ -10,7 +10,7 @@ export default [
   ...tsEslint.configs.recommended,
   ...tsEslint.configs.stylistic,
   {
-    ignores: [".aws-sam/"],
+    ignores: [".aws-sam/", "dist/"],
   },
   {
     rules: {
@@ -22,6 +22,7 @@ export default [
           args: "after-used",
           ignoreRestSiblings: true,
           caughtErrors: "none",
+          argsIgnorePattern: "^_",
         },
       ],
     },

@@ -8,3 +8,4 @@ env*.json
 !.env*.json.sample
 .aws-sam
 .idea
+/dist
